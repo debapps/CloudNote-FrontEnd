@@ -1,6 +1,6 @@
 import Logo from "./Logo";
 import NavBar from "./NavBar";
-import AuthButtons from "./Authbuttons";
+import AuthButtons from "./AuthButtons";
 import VerticalMenu from "./VerticalMenu";
 import { navData } from "../../../public/data/navData";
 

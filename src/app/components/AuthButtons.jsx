@@ -33,13 +33,13 @@ export default function AuthButtons() {
             )} */}
             <div>
                 <button
-                    onClick={() => router.push("/dashboard/login")}
-                    className="w-32 text-center font-righteous font-semibold text-base sm:text-xl px-5 py-1 rounded sm:rounded border-2 hover:border-black m-2 bg-brand-color text-black hover:bg-white">
+                    onClick={() => router.push("/signup")}
+                    className="w-32 text-center font-righteous font-semibold text-base sm:text-xl px-5 py-1 rounded sm:rounded border-2 hover:border-black sm:m-2 bg-brand-color text-black hover:bg-white">
                     Sign Up
                 </button>
                 <button
-                    onClick={() => router.push("/dashboard/signup")}
-                    className="w-32 text-center font-righteous font-semibold text-base sm:text-xl px-5 py-1 rounded sm:rounded border-2 border-black m-2 bg-white text-brand-color hover:bg-brand-color hover:text-black">
+                    onClick={() => router.push("/signin")}
+                    className="w-32 text-center font-righteous font-semibold text-base sm:text-xl px-5 py-1 rounded sm:rounded border-2 border-black sm:m-2 bg-white text-brand-color hover:bg-brand-color hover:text-black">
                     Sign In
                 </button>
             </div>

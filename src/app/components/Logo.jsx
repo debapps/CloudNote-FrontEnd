@@ -14,7 +14,7 @@ export default function Logo({ text }) {
             />
             <Link
                 href="/"
-                className="text-xl md:text-2xl font-russo tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-brand-color to-red-700 px-2 py-1">
+                className="text-xl md:text-4xl font-russo tracking-widest bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-brand-color to-red-700 px-2 py-1">
                 {text}
             </Link>
         </section>

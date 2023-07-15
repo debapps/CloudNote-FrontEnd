@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import "./globals.css";
 
 export const metadata = {
-    title: "CloudNote",
+    title: "Home | CloudNote",
     description:
         "Add your sticky notes oneline, Edit and Delete notes on cloud. Login securely in your exclusive account.",
 };

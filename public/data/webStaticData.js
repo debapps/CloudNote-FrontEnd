@@ -15,3 +15,8 @@ export const heroData = [
         image: "/images/Hero3.png",
     },
 ];
+
+export const aboutData = {
+    heading: "Your online note application",
+    image: "/images/about.jpg",
+};

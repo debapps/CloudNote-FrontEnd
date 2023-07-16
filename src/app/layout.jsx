@@ -1,3 +1,4 @@
+import AuthProvider from "./components/AuthProvider";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import "./globals.css";
@@ -33,9 +34,11 @@ export default function RootLayout({ children }) {
                 <link rel="manifest" href="/favicon/site.webmanifest" />
             </head>
             <body>
-                <Header />
-                {children}
-                <Footer />
+                <AuthProvider>
+                    <Header />
+                    {children}
+                    <Footer />
+                </AuthProvider>
             </body>
         </html>
     );

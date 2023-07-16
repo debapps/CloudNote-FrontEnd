@@ -3,8 +3,13 @@ import Image from "next/image";
 import signInImage from "../../../public/images/login-image.jpg";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { AlertContext } from "../context/alert/AlertProvider";
 
 export default function SignIn() {
+    // Get the alert context.
+    const { showAlert } = useContext(AlertContext);
+
     // Get the next auth session.
     const { data, status } = useSession();
 
@@ -20,8 +25,6 @@ export default function SignIn() {
         const email = event.target[0].value;
         const password = event.target[1].value;
 
-        console.log(email, password);
-
         // Sign in the user.
         const { error } = await signIn("credentials", {
             email,
@@ -30,7 +33,7 @@ export default function SignIn() {
         });
 
         if (error) {
-            console.log(error);
+            showAlert("error", error);
         }
     }
 

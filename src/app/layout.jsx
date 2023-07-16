@@ -1,6 +1,8 @@
+import AlertPopup from "./components/AlertPopup";
 import AuthProvider from "./components/AuthProvider";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import AlertProvider from "./context/alert/AlertProvider";
 import "./globals.css";
 
 export const metadata = {
@@ -35,9 +37,12 @@ export default function RootLayout({ children }) {
             </head>
             <body>
                 <AuthProvider>
-                    <Header />
-                    {children}
-                    <Footer />
+                    <AlertProvider>
+                        <Header />
+                        <AlertPopup />
+                        {children}
+                        <Footer />
+                    </AlertProvider>
                 </AuthProvider>
             </body>
         </html>

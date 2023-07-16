@@ -9,9 +9,15 @@ The newly implemented Next JS app router is used to build the frontend.
 ## Environment Variables
 
 -   **NEXT_PUBLIC_API_HOST:** The URL of the backend REST API.
+-   **NEXTAUTH_SECRET:** This is Next Auth Secret (Any random string).
+-   **NEXTAUTH_URL:** This is Next Auth URL (This is Application hosting URL)
 
 ## ApplicationURL
 
 ### Test/Dev URL
 
 http://localhost:3000
+
+### Production URL
+
+https://cloudnote-app.vercel.app/

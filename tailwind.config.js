@@ -18,6 +18,7 @@ module.exports = {
                 "insta-color": "#d6249f",
                 "github-color": "#f4a261",
                 "twitter-color": "#1da1f2",
+                "linkedin-color": "#0E76A8",
             },
         },
     },

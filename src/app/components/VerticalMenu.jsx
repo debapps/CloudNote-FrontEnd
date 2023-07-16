@@ -1,5 +1,6 @@
 "use client";
 
+import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -64,6 +65,7 @@ export default function VerticalMenu({ links }) {
                     />
                 </svg>
             </Button>
+
             <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
@@ -75,10 +77,12 @@ export default function VerticalMenu({ links }) {
                 {links.map((link, idx) => {
                     return (
                         <MenuItem
+                            className="text-gray-800 text-lg font-righteous hover:bg-brand-color"
                             key={idx}
-                            onClick={handleClose}
-                            divider={true}>
-                            <Link href={link.href}>{link.title}</Link>
+                            onClick={handleClose}>
+                            <Link className="text-center w-32" href={link.href}>
+                                {link.title}
+                            </Link>
                         </MenuItem>
                     );
                 })}

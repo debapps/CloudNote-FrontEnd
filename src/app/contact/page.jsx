@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SocialIcons from "../components/SocialIcons";
 
 export const metadata = {
     title: "Contact | CloudNote",
@@ -52,6 +53,10 @@ export default function Contact() {
                                     debaditya.bhar@gmail.com
                                 </span>
                                 .
+                            </p>
+                            <p>You can also reach me at social media.</p>
+                            <p className="border-2 border-brand-color rounded-md">
+                                <SocialIcons />
                             </p>
                         </article>
                     </section>

@@ -10,7 +10,7 @@ export const metadata = {
 export default function About() {
     return (
         <main>
-            <section className="min-h-screen flex flex-col sm:flex-row justify-center sm:justify-between items-center space-y-8 sm:space-x-16 px-20 py-10 bg-gray-100">
+            <section className="min-h-screen flex flex-col sm:flex-row justify-center sm:justify-between items-center space-y-8 sm:space-x-16 px-20 py-28 bg-gray-100">
                 {/* <!--Image Section --> */}
 
                 <Image

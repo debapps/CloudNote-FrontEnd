@@ -10,7 +10,7 @@ export const metadata = {
 export default function Contact() {
     return (
         <main>
-            <section className="px-20 py-10 bg-gray-50 min-h-screen">
+            <section className="px-20 py-36 bg-gray-50 min-h-screen">
                 <div className="flex flex-col items-center justify-center space-y-5 w-full">
                     {/* <!-- Heading Section --> */}
                     <h1 className="font-righteous text-xl sm:text-3xl font-semibold">
@@ -55,9 +55,9 @@ export default function Contact() {
                                 .
                             </p>
                             <p>You can also reach me at social media.</p>
-                            <p className="border-2 border-brand-color rounded-md">
+                            <div className="border-2 border-brand-color rounded-md">
                                 <SocialIcons />
-                            </p>
+                            </div>
                         </article>
                     </section>
                 </div>

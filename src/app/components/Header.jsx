@@ -7,7 +7,7 @@ import { navData } from "../../../public/data/navData";
 // Header Element.
 export default function Header() {
     return (
-        <header className="p-10 bg-gray-50 shadow-lg shadow-blue-100 opacity-90 flex flex-row justify-between items-center">
+        <header className="p-5 bg-gray-50 shadow-lg shadow-blue-100 opacity-90 flex flex-row justify-between items-center md:fixed w-full">
             <span className="order-1 md:hidden">
                 <VerticalMenu links={navData} />
             </span>

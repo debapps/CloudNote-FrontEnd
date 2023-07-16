@@ -33,6 +33,10 @@ export default function SignIn() {
         });
 
         if (error) {
+            // Reset the form values.
+            event.target.reset();
+
+            // Show the error message.
             showAlert("error", error);
         }
     }
@@ -43,7 +47,7 @@ export default function SignIn() {
 
     if (status === "unauthenticated") {
         return (
-            <section className="bg-gradient-to-r from-yellow-300 via-orange-300 to-red-500 w-full min-h-screen flex justify-center items-center p-10">
+            <section className="bg-gradient-to-r from-yellow-300 via-orange-300 to-red-500 w-full min-h-screen flex justify-center items-center px-10 py-36">
                 <div className="flex flex-col sm:flex-row justify-center items-center space-y-8 sm:space-x-8 w-full sm:w-4/5 rounded-md sm:rounded-lg shadow-lg bg-gray-50">
                     <Image
                         className="block w-full sm:w-1/2 rounded-md"

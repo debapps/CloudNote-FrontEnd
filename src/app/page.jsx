@@ -9,9 +9,11 @@ export default function Home() {
 
     if (status === "authenticated") {
         return (
-            <p className="min-h-screen text-3xl text-brand-color font-righteous text-center pt-5">
-                Hello, {data.user.name}
-            </p>
+            <main className="min-h-screen px-10 py-36">
+                <p className="text-3xl text-brand-color font-righteous text-center">
+                    Hello, {data.user.name}
+                </p>
+            </main>
         );
     } else {
         return <HeroElement heroData={heroData} />;

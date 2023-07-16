@@ -21,7 +21,9 @@ export default function AlertComponent({ alert }) {
                 anchorOrigin={{ horizontal: "right", vertical: "top" }}
                 TransitionComponent={SlideTransition}>
                 <Alert elevation={6} variant="filled" severity={alert.severity}>
-                    <strong>{alert.message}</strong>
+                    <strong className="text-sm md:text-lg font-poppins">
+                        {alert.message}
+                    </strong>
                 </Alert>
             </Snackbar>
         )

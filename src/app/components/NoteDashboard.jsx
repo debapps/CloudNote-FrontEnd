@@ -5,6 +5,10 @@ import IconButton from "@mui/material/IconButton";
 import Zoom from "@mui/material/Zoom";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import useSWR from "swr";
+import { fetcher } from "@/utils/callAPI";
+import { notFound } from "next/navigation";
+import ProgressCircle from "./ProgressCircle";
 
 const theme = createTheme({
     palette: {
@@ -20,65 +24,61 @@ const theme = createTheme({
 });
 
 export default function NoteDashboard({ userData }) {
-    return (
-        <>
-            <Zoom in={true} style={{ transitionDelay: "500ms" }}>
-                <div className="bg-blue-950 rounded-full fixed top-48 md:top-auto right-10 shadow-lg shadow-brand-color">
-                    <ThemeProvider theme={theme}>
-                        <IconButton
-                            aria-label="add"
-                            size="large"
-                            color="primary">
-                            <AddCircleOutlineIcon />
-                        </IconButton>
-                    </ThemeProvider>
-                </div>
-            </Zoom>
+    // API Endpoint
+    const endPoint = "/api/note/notes";
 
-            <div className="bg-emerald-950 p-5 max-w-fit rounded-lg shadow-xl shadow-brand-color">
-                <h1 className="text-lg sm:text-2xl font-russo font-semibold text-center bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-brand-color">
-                    Welcome, {userData?.user.name}! Find your notes..
-                </h1>
-            </div>
+    // Access token.
+    const accessToken = userData.user.accessToken;
 
-            <section className="p-5 flex flex-wrap flex-col sm:flex-row items-center sm:items-start justify-center">
-                <NoteCard
-                    title="Heading 1"
-                    content="Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Amet hic provident dolor debitis omnis soluta porro
-                perspiciatis cupiditate? Ex, tempore. Inventore ex
-                suscipit laudantium incidunt odio numquam repellendus
-                accusamus est!"
-                    slug={1}
-                />
-                <NoteCard
-                    title="Heading 1"
-                    content="Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Amet hic provident dolor debitis omnis soluta porro
-                perspiciatis cupiditate? Ex, tempore. Inventore ex
-                suscipit laudantium incidunt odio numquam repellendus
-                accusamus est!"
-                    slug={1}
-                />
-                <NoteCard
-                    title="Heading 1"
-                    content="Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Amet hic provident dolor debitis omnis soluta porro
-                perspiciatis cupiditate? Ex, tempore. Inventore ex
-                suscipit laudantium incidunt odio numquam repellendus
-                accusamus est!"
-                    slug={1}
-                />
-                <NoteCard
-                    title="Heading 1"
-                    content="Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Amet hic provident dolor debitis omnis soluta porro
-                perspiciatis cupiditate? Ex, tempore. Inventore ex
-                suscipit laudantium incidunt odio numquam repellendus
-                accusamus est!"
-                    slug={1}
-                />
-            </section>
-        </>
+    // The swr hook.
+    const { data, mutate, error, isLoading } = useSWR(
+        [endPoint, accessToken],
+        fetcher
     );
+
+    // Get the note data.
+    if (isLoading) {
+        return <ProgressCircle active={true} />;
+    } else if (error) {
+        return notFound();
+    } else {
+        // Get the list of notes from the API.
+        const noteList = data.data;
+
+        return (
+            <>
+                <Zoom in={true} style={{ transitionDelay: "500ms" }}>
+                    <div className="bg-blue-950 rounded-full fixed top-48 md:top-auto right-10 shadow-lg shadow-brand-color">
+                        <ThemeProvider theme={theme}>
+                            <IconButton
+                                aria-label="add"
+                                size="large"
+                                color="primary">
+                                <AddCircleOutlineIcon />
+                            </IconButton>
+                        </ThemeProvider>
+                    </div>
+                </Zoom>
+
+                <div className="bg-emerald-950 p-5 max-w-fit rounded-lg shadow-xl shadow-brand-color">
+                    <h1 className="text-lg sm:text-2xl font-russo font-semibold text-center bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-brand-color">
+                        Welcome, {userData.user.name} ! Find your notes..
+                    </h1>
+                </div>
+
+                <section className="p-5 flex flex-wrap flex-col sm:flex-row items-center sm:items-start justify-center">
+                    {noteList.map((note, idx) => {
+                        return (
+                            <NoteCard
+                                key={idx}
+                                title={note.title}
+                                content={note.content}
+                                slug={note.slug}
+                            />
+                        );
+                    })}
+                </section>
+            </>
+        );
+    }
 }

@@ -15,7 +15,8 @@ const handler = NextAuth({
                 );
 
                 if (status === 200) {
-                    return data;
+                    const user = data;
+                    return user;
                 } else {
                     throw new Error(data);
                 }
@@ -24,6 +25,15 @@ const handler = NextAuth({
     ],
     pages: {
         error: "/signin",
+    },
+    callbacks: {
+        async jwt({ token, user }) {
+            return { ...token, ...user };
+        },
+        async session({ session, token }) {
+            session.user = token;
+            return session;
+        },
     },
 });
 

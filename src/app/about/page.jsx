@@ -10,7 +10,7 @@ export const metadata = {
 export default function About() {
     return (
         <main>
-            <section className="min-h-screen flex flex-col sm:flex-row justify-center sm:justify-between items-center space-y-8 sm:space-x-16 px-20 py-28 bg-gray-100">
+            <section className="min-h-screen flex flex-col sm:flex-row justify-center sm:justify-between items-center space-y-8 sm:space-x-16 px-10 py-10 md:py-36 bg-gray-100">
                 {/* <!--Image Section --> */}
 
                 <Image
@@ -23,11 +23,13 @@ export default function About() {
 
                 {/* <!-- Text Section --> */}
                 <article className="flex flex-col items-start justify-start space-y-2 w-full sm:w-1/2">
-                    <h1 className="font-righteous text-xl sm:text-3xl font-semibold pb-4">
+                    <h1 className="font-righteous text-xl sm:text-3xl font-semibold pb-4 bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-brand-color to-red-700">
                         {aboutData.heading}
                     </h1>
                     <p className="font-poppins font-medium text-sm sm:text-lg">
-                        <span className="font-bold font-russo">Cloud Note</span>{" "}
+                        <span className="font-bold font-russo bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-brand-color to-red-700">
+                            CloudNote
+                        </span>{" "}
                         is the open source note taking application to store your
                         memos, articles, sticky notes securely on cloud. You can
                         join the app securely using your email and password. You
@@ -35,7 +37,9 @@ export default function About() {
                         account dashboard.
                     </p>
                     <p className="font-poppins font-medium text-sm sm:text-lg">
-                        <span className="font-bold font-russo">Cloud Note</span>{" "}
+                        <span className="font-bold font-russo bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-brand-color to-red-700">
+                            CloudNote
+                        </span>{" "}
                         is developed using NextJS, designed using Tailwind CSS.
                         All the data is securely stored in MongoDB Atlas Cloud.
                         It uses{" "}
@@ -49,7 +53,9 @@ export default function About() {
                     </p>
                     <p className="font-poppins font-medium text-sm sm:text-lg">
                         So, start taking all your notes, memos on{" "}
-                        <span className="font-bold font-russo">Cloud Note</span>{" "}
+                        <span className="font-bold font-russo bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-brand-color to-red-700">
+                            Cloud Note
+                        </span>{" "}
                         securely, on-cloud and wherever you go!
                     </p>
                 </article>

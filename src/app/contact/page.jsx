@@ -10,10 +10,10 @@ export const metadata = {
 export default function Contact() {
     return (
         <main>
-            <section className="px-20 py-36 bg-gray-50 min-h-screen">
+            <section className="px-10 py-10 md:py-36 bg-gray-50 min-h-screen">
                 <div className="flex flex-col items-center justify-center space-y-5 w-full">
                     {/* <!-- Heading Section --> */}
-                    <h1 className="font-righteous text-xl sm:text-3xl font-semibold">
+                    <h1 className="font-righteous text-xl sm:text-3xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-brand-color to-red-700">
                         Contact us
                     </h1>
                     <h3 className="font-poppins font-medium text-lg sm:text-xl">

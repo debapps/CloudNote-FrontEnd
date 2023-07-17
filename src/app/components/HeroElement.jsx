@@ -20,7 +20,7 @@ export default function HeroElement({ heroData }) {
 
                 {/* <!-- Hero Image Section --> */}
                 <Image
-                    className="block w-full sm:w-1/3 rounded-3xl shadow-lg shadow-gray-400"
+                    className="block w-full sm:w-1/3 rounded-3xl shadow-lg shadow-brand-color"
                     src={heroData[0].image}
                     alt="hero-image"
                     width={500}
@@ -61,7 +61,7 @@ export default function HeroElement({ heroData }) {
 
                 {/* <!--Image Section --> */}
                 <Image
-                    className="block w-full sm:w-1/3 rounded-3xl shadow-lg shadow-gray-400"
+                    className="block w-full sm:w-1/3 rounded-3xl shadow-lg shadow-brand-color"
                     src={heroData[2].image}
                     alt="notes-image"
                     width={500}

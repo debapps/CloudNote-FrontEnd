@@ -8,7 +8,7 @@ import { getHTML } from "@/utils/htmlMarkDownConverter";
 
 export default function NoteCard({ title, content, slug, deleteFunc }) {
     // Conver the first 150 character content into HTML.
-    const htmlContent = getHTML(content.substring(0, 150));
+    const htmlContent = getHTML(`${content.substring(0, 150)} ...`);
 
     return (
         <Grow in={true}>
@@ -33,8 +33,9 @@ export default function NoteCard({ title, content, slug, deleteFunc }) {
                     className="preview"
                     dangerouslySetInnerHTML={{ __html: htmlContent }}
                 />
-                {" ..."}
-                <Link className="font-semibold" href={`/${slug}`}>
+                <Link
+                    className="font-semibold text-blue-900 font-poppins"
+                    href={`/${slug}`}>
                     More
                 </Link>
             </article>

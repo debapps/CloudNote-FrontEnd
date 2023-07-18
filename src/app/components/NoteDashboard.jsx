@@ -53,6 +53,12 @@ export default function NoteDashboard({ userData }) {
     // Access token.
     const accessToken = userData.user.accessToken;
 
+    // Creates the authorization header.
+    const authHeader = new Headers({
+        "Content-Type": "application/json",
+        authorization: `Bearer ${accessToken}`,
+    });
+
     // The swr hook.
     const { data, mutate, error, isLoading } = useSWR(
         [endPoint, accessToken],
@@ -71,12 +77,6 @@ export default function NoteDashboard({ userData }) {
             title,
             content,
         };
-
-        // Creates the authorization header.
-        const authHeader = new Headers({
-            "Content-Type": "application/json",
-            authorization: `Bearer ${accessToken}`,
-        });
 
         // Call the note API.
         const { status, data } = await remoteAPICall(
@@ -106,12 +106,6 @@ export default function NoteDashboard({ userData }) {
 
     // This function deletes a note specific to the input slug.
     async function deleteNote(slug) {
-        // Creates the authorization header.
-        const authHeader = new Headers({
-            "Content-Type": "application/json",
-            authorization: `Bearer ${accessToken}`,
-        });
-
         // Call the note API.
         const { status, data } = await remoteAPICall(
             `/api/note/${slug}`,

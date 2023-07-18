@@ -6,12 +6,13 @@ import Zoom from "@mui/material/Zoom";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import useSWR from "swr";
-import { fetcher } from "@/utils/callAPI";
+import { fetcher, remoteAPICall } from "@/utils/callAPI";
 import { notFound } from "next/navigation";
 import ProgressCircle from "./ProgressCircle";
 import Slide from "@mui/material/Slide";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Dialog, DialogTitle } from "@mui/material";
+import { AlertContext } from "../context/alert/AlertProvider";
 
 const theme = createTheme({
     palette: {
@@ -27,6 +28,9 @@ const theme = createTheme({
 });
 
 export default function NoteDashboard({ userData }) {
+    // Alert Context.
+    const { showAlert } = useContext(AlertContext);
+
     // Dialog hook.
     const [open, setOpen] = useState(false);
 
@@ -53,6 +57,51 @@ export default function NoteDashboard({ userData }) {
         [endPoint, accessToken],
         fetcher
     );
+
+    // This function saves the note.
+    async function saveNote(event) {
+        // Prevents default form behaviour.
+        event.preventDefault();
+
+        // Gets the form inputs and creates the note body.
+        const title = event.target[0].value;
+        const content = event.target[1].value;
+        const noteBody = {
+            title,
+            content,
+        };
+
+        // Creates the authorization header.
+        const header = new Headers({
+            "Content-Type": "application/json",
+            authorization: `Bearer ${accessToken}`,
+        });
+
+        // Call the note API.
+        const { status, data } = await remoteAPICall(
+            "/api/note",
+            "POST",
+            noteBody,
+            header
+        );
+
+        if (status === 200) {
+            // Clear the form.
+            event.target.reset();
+
+            // Close the Dialog.
+            handleClose();
+
+            // Show the success message.
+            showAlert("success", data);
+
+            // Reflect the changes.
+            mutate();
+        } else {
+            // Show the error.
+            showAlert("error", data);
+        }
+    }
 
     // Get the note data.
     if (isLoading) {
@@ -86,17 +135,19 @@ export default function NoteDashboard({ userData }) {
                     <DialogTitle className="text-xl md:text-2xl font-russo bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-brand-color text-center">
                         Add Note
                     </DialogTitle>
-                    <form className="flex flex-col justify-center items-center p-10 space-y-5">
+                    <form
+                        onSubmit={saveNote}
+                        className="flex flex-col justify-center items-center p-10 space-y-5">
                         <input
                             type="text"
                             placeholder="Title"
-                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded text-center"
+                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded"
                         />
                         <textarea
                             rows={10}
                             cols={50}
                             placeholder="Content"
-                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded text-center"
+                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded"
                         />
                         <button className="w-full p-2 font-righteous text-sm sm:text-base font-semibold border-2 border-black rounded bg-brand-color">
                             Save

@@ -9,6 +9,7 @@ import useSWR from "swr";
 import { fetcher } from "@/utils/callAPI";
 import { notFound } from "next/navigation";
 import ProgressCircle from "./ProgressCircle";
+import Slide from "@mui/material/Slide";
 
 const theme = createTheme({
     palette: {
@@ -47,7 +48,7 @@ export default function NoteDashboard({ userData }) {
 
         return (
             <>
-                <Zoom in={true} style={{ transitionDelay: "500ms" }}>
+                <Zoom in={true} style={{ transitionDelay: "200ms" }}>
                     <div className="bg-blue-950 rounded-full fixed top-48 md:top-auto right-10 shadow-lg shadow-brand-color">
                         <ThemeProvider theme={theme}>
                             <IconButton
@@ -60,24 +61,36 @@ export default function NoteDashboard({ userData }) {
                     </div>
                 </Zoom>
 
-                <div className="bg-emerald-950 p-5 max-w-fit rounded-lg shadow-xl shadow-brand-color">
-                    <h1 className="text-lg sm:text-2xl font-russo font-semibold text-center bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-brand-color">
-                        Welcome, {userData.user.name} ! Find your notes..
-                    </h1>
-                </div>
+                <Slide in={true} direction="right">
+                    <div className="bg-emerald-950 p-5 max-w-fit rounded-lg shadow-xl shadow-brand-color">
+                        <h1 className="text-lg sm:text-2xl font-russo font-semibold text-center bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-brand-color">
+                            Welcome, {userData.user.name} ! Find your notes..
+                        </h1>
+                    </div>
+                </Slide>
 
-                <section className="p-5 flex flex-wrap flex-col sm:flex-row items-center sm:items-start justify-center">
-                    {noteList.map((note, idx) => {
-                        return (
-                            <NoteCard
-                                key={idx}
-                                title={note.title}
-                                content={note.content}
-                                slug={note.slug}
-                            />
-                        );
-                    })}
-                </section>
+                {noteList.length ? (
+                    <section className="p-5 flex flex-wrap flex-col sm:flex-row items-center sm:items-start justify-center">
+                        {noteList.map((note, idx) => {
+                            return (
+                                <NoteCard
+                                    key={idx}
+                                    title={note.title}
+                                    content={note.content}
+                                    slug={note.slug}
+                                />
+                            );
+                        })}
+                    </section>
+                ) : (
+                    <Zoom in={true} style={{ transitionDelay: "500ms" }}>
+                        <section className="py-20 flex justify-center">
+                            <p className="text-lg md:text-3xl font-righteous text-brand-color bg-blue-950 max-w-fit p-5 rounded-lg shadow-lg shadow-brand-color">
+                                You have clean slate !
+                            </p>
+                        </section>
+                    </Zoom>
+                )}
             </>
         );
     }

@@ -8,7 +8,6 @@ import Link from "next/link";
 export default function NoteCard({ title, content, slug }) {
     return (
         <Grow in={true}>
-            {/* <Link href={`/note/${slug}`}> */}
             <article className="w-3/4 sm:w-1/4 min-h-fit border shadow-xl shadow-blue-200 rounded-lg bg-brand-color p-5 m-5">
                 <section className="text-sm sm:text-base flex flex-row items-end justify-end space-x-1">
                     <IconButton aria-label="edit" color="success">
@@ -22,10 +21,12 @@ export default function NoteCard({ title, content, slug }) {
                     {title}
                 </h3>
                 <p className="text-xs sm:text-base font-poppins font-normal">
-                    {content}
+                    {`${content.substring(0, 150)} ... `}{" "}
+                    <Link className="font-semibold" href={`/${slug}`}>
+                        More
+                    </Link>
                 </p>
             </article>
-            {/* </Link> */}
         </Grow>
     );
 }

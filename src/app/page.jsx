@@ -11,7 +11,7 @@ export default function Home() {
 
     if (status === "loading") {
         return (
-            <main className="min-h-screen px-10 py-10 md:py-36">
+            <main className="min-h-screen px-10 py-20 md:py-36">
                 <ProgressCircle active={true} />
             </main>
         );

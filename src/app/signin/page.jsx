@@ -3,8 +3,9 @@ import Image from "next/image";
 import signInImage from "../../../public/images/login-image.jpg";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AlertContext } from "../context/alert/AlertProvider";
+import ProgressCircle from "../components/ProgressCircle";
 
 export default function SignIn() {
     // Get the alert context.
@@ -13,10 +14,16 @@ export default function SignIn() {
     // Next Router.
     const router = useRouter();
 
+    // Progress circle hook.
+    const [progress, setProgress] = useState(false);
+
     // This function handles the sign-in process.
     async function handleSignIn(event) {
         // prevent default behaviour of the form.
         event.preventDefault();
+
+        // Set the progress to true.
+        setProgress(true);
 
         // Get the form inputs from the event.
         const email = event.target[0].value;
@@ -28,6 +35,9 @@ export default function SignIn() {
             password,
             redirect: false,
         });
+
+        // Set the progress to false.
+        setProgress(false);
 
         if (error) {
             // Reset the form values.
@@ -54,6 +64,7 @@ export default function SignIn() {
                     onSubmit={handleSignIn}
                     className="flex flex-col justify-center items-center space-y-2 p-8 sm:w-1/2">
                     <div className="w-full pb-5 text-center">
+                        <ProgressCircle active={progress} />
                         <h1 className="text-xl sm:text-3xl font-semibold font-russo capitalize bg-clip-text text-transparent bg-gradient-to-r from-orange-600 via-brand-color to-red-700">
                             Log in
                         </h1>

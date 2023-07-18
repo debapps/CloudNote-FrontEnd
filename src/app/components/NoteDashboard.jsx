@@ -10,6 +10,8 @@ import { fetcher } from "@/utils/callAPI";
 import { notFound } from "next/navigation";
 import ProgressCircle from "./ProgressCircle";
 import Slide from "@mui/material/Slide";
+import { useState } from "react";
+import { Dialog, DialogTitle } from "@mui/material";
 
 const theme = createTheme({
     palette: {
@@ -25,6 +27,21 @@ const theme = createTheme({
 });
 
 export default function NoteDashboard({ userData }) {
+    // Dialog hook.
+    const [open, setOpen] = useState(false);
+
+    //Dialoge open and close functions.
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    // Declare node list.
+    let noteList = [];
+
     // API Endpoint
     const endPoint = "/api/note/notes";
 
@@ -44,7 +61,7 @@ export default function NoteDashboard({ userData }) {
         return notFound();
     } else {
         // Get the list of notes from the API.
-        const noteList = data.data;
+        noteList = data.data;
 
         return (
             <>
@@ -52,6 +69,7 @@ export default function NoteDashboard({ userData }) {
                     <div className="bg-blue-950 rounded-full fixed top-48 md:top-auto right-10 shadow-lg shadow-brand-color">
                         <ThemeProvider theme={theme}>
                             <IconButton
+                                onClick={handleClickOpen}
                                 aria-label="add"
                                 size="large"
                                 color="primary">
@@ -60,6 +78,31 @@ export default function NoteDashboard({ userData }) {
                         </ThemeProvider>
                     </div>
                 </Zoom>
+
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="add-note-dialog">
+                    <DialogTitle className="text-xl md:text-2xl font-russo bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-brand-color text-center">
+                        Add Note
+                    </DialogTitle>
+                    <form className="flex flex-col justify-center items-center p-10 space-y-5">
+                        <input
+                            type="text"
+                            placeholder="Title"
+                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded text-center"
+                        />
+                        <textarea
+                            rows={10}
+                            cols={50}
+                            placeholder="Content"
+                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded text-center"
+                        />
+                        <button className="w-full p-2 font-righteous text-sm sm:text-base font-semibold border-2 border-black rounded bg-brand-color">
+                            Save
+                        </button>
+                    </form>
+                </Dialog>
 
                 <Slide in={true} direction="right">
                     <div className="bg-emerald-950 p-5 max-w-fit rounded-lg shadow-xl shadow-brand-color">

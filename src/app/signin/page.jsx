@@ -71,20 +71,20 @@ export default function SignIn() {
                     </div>
                     <div className="flex flex-col items-center space-y-4 pb-5 w-full">
                         <input
-                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded text-center"
+                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-brand-color rounded text-center"
                             type="email"
                             name="email"
                             placeholder="Your email"
                         />
                         <input
-                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded text-center"
+                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-brand-color rounded text-center"
                             type="password"
                             name="password"
                             placeholder="Password"
                         />
                     </div>
                     <div className="w-full">
-                        <button className="w-full p-2 font-righteous text-sm sm:text-base font-semibold border-2 border-black rounded bg-yellow-300">
+                        <button className="w-full p-2 font-righteous text-sm sm:text-base font-semibold border-2 border-black rounded bg-brand-color">
                             Log In
                         </button>
                     </div>

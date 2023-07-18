@@ -120,7 +120,7 @@ export default function SignUp() {
                     </div>
                     <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 pb-2 w-full">
                         <input
-                            className="w-full sm:w-1/2 p-2 font-poppins text-xs md:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded text-center"
+                            className="w-full sm:w-1/2 p-2 font-poppins text-xs md:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-brand-color rounded text-center"
                             type="text"
                             name="firstName"
                             ref={firstName}
@@ -128,7 +128,7 @@ export default function SignUp() {
                             required
                         />
                         <input
-                            className="w-full sm:w-1/2 p-2 font-poppins text-xs md:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded text-center"
+                            className="w-full sm:w-1/2 p-2 font-poppins text-xs md:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-brand-color rounded text-center"
                             type="text"
                             name="lastName"
                             ref={lastName}
@@ -201,7 +201,7 @@ export default function SignUp() {
                             Date of Birth
                         </label>
                         <input
-                            className="w-1/2 p-2 font-poppins text-xs md:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded text-center"
+                            className="w-1/2 p-2 font-poppins text-xs md:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-brand-color rounded text-center"
                             type="date"
                             id="dob"
                             name="birthDate"
@@ -210,7 +210,7 @@ export default function SignUp() {
                     </div>
                     <div className="flex flex-col items-center space-y-4 pb-5 w-full">
                         <input
-                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded text-center"
+                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-brand-color rounded text-center"
                             type="email"
                             name="email"
                             ref={email}
@@ -218,7 +218,7 @@ export default function SignUp() {
                             required
                         />
                         <input
-                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded text-center"
+                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-brand-color rounded text-center"
                             type="password"
                             name="password"
                             ref={password}
@@ -226,7 +226,7 @@ export default function SignUp() {
                             required
                         />
                         <input
-                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-yellow-300 rounded text-center"
+                            className="w-full p-2 font-poppins text-xs sm:text-base font-normal border-2 border-black focus:outline-none focus:ring focus:ring-brand-color rounded text-center"
                             type="password"
                             name="confirmPass"
                             ref={confirmPass}
@@ -237,7 +237,7 @@ export default function SignUp() {
                     <div className="w-full">
                         <button
                             onClick={handleSignUp}
-                            className="w-full p-2 font-righteous text-sm sm:text-base font-semibold border-2 border-black rounded bg-yellow-300">
+                            className="w-full p-2 font-righteous text-sm sm:text-base font-semibold border-2 border-black rounded bg-brand-color">
                             Join
                         </button>
                     </div>

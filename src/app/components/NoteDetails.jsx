@@ -4,6 +4,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { IconButton } from "@mui/material";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import { useRouter } from "next/navigation";
+import { getDateFormatted } from "@/utils/FormatDate";
 
 const theme = createTheme({
     palette: {
@@ -29,7 +30,7 @@ export default function NoteDetails({ title, content, updatedAt }) {
                     {title}
                 </h1>
                 <p className="text-xs md:text-sm font-poppins font-thin text-gray-500 italic">
-                    Last Update On: {updatedAt}
+                    Last Update On: {getDateFormatted(updatedAt)}
                 </p>
             </section>
             <section className="text-lg md:text-xl font-poppins font-normal text-gray-800 flex flex-col justify-center items-center space-y-5">

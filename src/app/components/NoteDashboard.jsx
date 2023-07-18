@@ -13,6 +13,7 @@ import Slide from "@mui/material/Slide";
 import { useContext, useState } from "react";
 import { Dialog, DialogTitle } from "@mui/material";
 import { AlertContext } from "../context/alert/AlertProvider";
+import { getHTML, getMarkDown } from "@/utils/htmlMarkDownConverter";
 
 const theme = createTheme({
     palette: {
@@ -65,7 +66,7 @@ export default function NoteDashboard({ userData }) {
 
         // Gets the form inputs and creates the note body.
         const title = event.target[0].value;
-        const content = event.target[1].value;
+        const content = getHTML(event.target[1].value);
         const noteBody = {
             title,
             content,
@@ -170,7 +171,7 @@ export default function NoteDashboard({ userData }) {
                                 <NoteCard
                                     key={idx}
                                     title={note.title}
-                                    content={note.content}
+                                    content={getMarkDown(note.content)}
                                     slug={note.slug}
                                 />
                             );

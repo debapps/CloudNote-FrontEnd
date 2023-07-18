@@ -33,9 +33,10 @@ export default function NoteDetails({ title, content, updatedAt }) {
                     Last Update On: {getDateFormatted(updatedAt)}
                 </p>
             </section>
-            <section className="text-lg md:text-xl font-poppins font-normal text-gray-800 flex flex-col justify-center items-center space-y-5">
-                <p>{content}</p>
-            </section>
+            <div
+                className="preview"
+                dangerouslySetInnerHTML={{ __html: content }}
+            />
             <section className="bg-blue-950 shadow-lg shadow-brand-color rounded-full">
                 <ThemeProvider theme={theme}>
                     <IconButton

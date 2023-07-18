@@ -3,3 +3,76 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    .preview {
+        @apply text-sm md:text-lg font-poppins font-medium tracking-wide;
+    }
+
+    .preview h1 {
+        @apply text-3xl md:text-5xl font-righteous font-extrabold py-10 leading-10 tracking-widest;
+    }
+
+    .preview h2 {
+        @apply text-xl md:text-3xl font-righteous font-bold py-10 leading-10 tracking-wider;
+    }
+
+    .preview h3 {
+        @apply text-lg md:text-xl font-righteous font-bold py-10 leading-10 tracking-wide;
+    }
+    .preview p {
+        @apply py-2 leading-8 tracking-normal;
+    }
+
+    /* .preview > p:first-child::first-letter {
+        @apply font-bold text-6xl;
+    } */
+
+    .preview p > img {
+        @apply w-2/3 rounded-lg block pt-10 pb-7 mx-auto;
+    }
+
+    .preview p > img + em {
+        @apply text-base italic block w-full text-center pb-10;
+    }
+
+    .preview blockquote {
+        @apply block p-5 mx-10 my-5 bg-fuchsia-50 border-l-8 border-l-purple-800 text-base md:text-lg;
+    }
+
+    .preview strong {
+        @apply font-bold font-russo;
+    }
+
+    .preview em {
+        @apply italic;
+    }
+
+    .preview a {
+        @apply text-purple-600;
+    }
+
+    .preview a:hover {
+        @apply text-fuchsia-200;
+    }
+
+    .preview pre {
+        @apply bg-amber-950 text-fuchsia-200 block mx-auto w-full lg:w-3/4 p-5 m-5 rounded-xl;
+    }
+
+    .preview pre > code {
+        @apply text-xs md:text-base font-medium font-mono break-words;
+    }
+
+    .preview code {
+        @apply bg-purple-950 text-fuchsia-200 p-2 rounded-lg text-xs md:text-base font-medium font-mono break-words;
+    }
+
+    .preview ul {
+        @apply list-disc py-1 pl-10 m-2;
+    }
+
+    .preview ol {
+        @apply list-decimal py-1 pl-10 m-2;
+    }
+}

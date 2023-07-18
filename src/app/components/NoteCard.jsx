@@ -4,8 +4,12 @@ import EditNoteIcon from "@mui/icons-material/EditNote";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Grow from "@mui/material/Grow";
 import Link from "next/link";
+import { getHTML } from "@/utils/htmlMarkDownConverter";
 
 export default function NoteCard({ title, content, slug }) {
+    // Conver the first 150 character content into HTML.
+    const htmlContent = getHTML(content.substring(0, 150));
+
     return (
         <Grow in={true}>
             <article className="w-3/4 sm:w-1/4 min-h-fit border shadow-xl shadow-blue-200 rounded-lg bg-brand-color p-5 m-5">
@@ -20,12 +24,14 @@ export default function NoteCard({ title, content, slug }) {
                 <h3 className="text-base sm:text-xl font-righteous font-semibold pb-2">
                     {title}
                 </h3>
-                <p className="text-xs sm:text-base font-poppins font-normal">
-                    {`${content.substring(0, 150)} ... `}{" "}
-                    <Link className="font-semibold" href={`/${slug}`}>
-                        More
-                    </Link>
-                </p>
+                <div
+                    className="preview"
+                    dangerouslySetInnerHTML={{ __html: htmlContent }}
+                />
+                {" ..."}
+                <Link className="font-semibold" href={`/${slug}`}>
+                    More
+                </Link>
             </article>
         </Grow>
     );

@@ -6,7 +6,7 @@ import Grow from "@mui/material/Grow";
 import Link from "next/link";
 import { getHTML } from "@/utils/htmlMarkDownConverter";
 
-export default function NoteCard({ title, content, slug }) {
+export default function NoteCard({ title, content, slug, deleteFunc }) {
     // Conver the first 150 character content into HTML.
     const htmlContent = getHTML(content.substring(0, 150));
 
@@ -17,11 +17,16 @@ export default function NoteCard({ title, content, slug }) {
                     <IconButton aria-label="edit" color="success">
                         <EditNoteIcon />
                     </IconButton>
-                    <IconButton aria-label="delete" color="error">
+                    <IconButton
+                        aria-label="delete"
+                        color="error"
+                        onClick={() => {
+                            deleteFunc(slug);
+                        }}>
                         <DeleteForeverIcon />
                     </IconButton>
                 </section>
-                <h3 className="text-base sm:text-xl font-righteous font-semibold pb-2">
+                <h3 className="text-md sm:text-2xl font-righteous font-semibold text-blue-900 pb-2">
                     {title}
                 </h3>
                 <div

@@ -73,7 +73,7 @@ export default function NoteDashboard({ userData }) {
         };
 
         // Creates the authorization header.
-        const header = new Headers({
+        const authHeader = new Headers({
             "Content-Type": "application/json",
             authorization: `Bearer ${accessToken}`,
         });
@@ -83,7 +83,7 @@ export default function NoteDashboard({ userData }) {
             "/api/note",
             "POST",
             noteBody,
-            header
+            authHeader
         );
 
         if (status === 200) {
@@ -93,6 +93,34 @@ export default function NoteDashboard({ userData }) {
             // Close the Dialog.
             handleClose();
 
+            // Show the success message.
+            showAlert("success", data);
+
+            // Reflect the changes.
+            mutate();
+        } else {
+            // Show the error.
+            showAlert("error", data);
+        }
+    }
+
+    // This function deletes a note specific to the input slug.
+    async function deleteNote(slug) {
+        // Creates the authorization header.
+        const authHeader = new Headers({
+            "Content-Type": "application/json",
+            authorization: `Bearer ${accessToken}`,
+        });
+
+        // Call the note API.
+        const { status, data } = await remoteAPICall(
+            `/api/note/${slug}`,
+            "DELETE",
+            {},
+            authHeader
+        );
+
+        if (status === 200) {
             // Show the success message.
             showAlert("success", data);
 
@@ -173,6 +201,7 @@ export default function NoteDashboard({ userData }) {
                                     title={note.title}
                                     content={getMarkDown(note.content)}
                                     slug={note.slug}
+                                    deleteFunc={deleteNote}
                                 />
                             );
                         })}

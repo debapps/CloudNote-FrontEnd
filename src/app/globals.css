@@ -37,7 +37,7 @@
     }
 
     .preview blockquote {
-        @apply block p-5 mx-10 my-5 bg-fuchsia-50 border-l-8 border-l-purple-800 text-base md:text-lg;
+        @apply block p-5 mx-10 my-5 bg-yellow-50 border-l-8 border-l-brand-color text-base md:text-lg;
     }
 
     .preview strong {

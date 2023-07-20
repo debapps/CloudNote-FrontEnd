@@ -49,6 +49,7 @@ export default function SlugNote({ params }) {
             <NoteDetails
                 title={title}
                 content={content}
+                slug={params.slug}
                 updatedAt={updatedAt}
             />
         );

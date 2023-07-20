@@ -138,7 +138,7 @@ export default function NoteDashboard({ userData }) {
         return (
             <>
                 <Zoom in={true} style={{ transitionDelay: "200ms" }}>
-                    <div className="bg-blue-950 rounded-full fixed top-48 md:top-auto right-10 shadow-lg shadow-brand-color">
+                    <div className="bg-blue-950 rounded-full fixed right-8 bottom-72 shadow-lg shadow-brand-color">
                         <ThemeProvider theme={theme}>
                             <IconButton
                                 onClick={handleClickOpen}

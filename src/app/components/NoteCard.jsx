@@ -4,6 +4,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Grow from "@mui/material/Grow";
 import Link from "next/link";
 import { getHTML } from "@/utils/htmlMarkDownConverter";
+import Tooltip from "@mui/material/Tooltip";
 
 export default function NoteCard({ title, content, slug, deleteFunc }) {
     // Conver the first 150 character content into HTML.
@@ -12,19 +13,21 @@ export default function NoteCard({ title, content, slug, deleteFunc }) {
     return (
         <Grow in={true}>
             <article className="w-3/4 sm:w-1/4 min-h-fit border shadow-xl shadow-blue-200 rounded-lg bg-brand-color p-5 m-5">
-                <section className="text-sm sm:text-base flex flex-row items-end justify-end space-x-1">
-                    <IconButton
-                        aria-label="delete"
-                        color="error"
-                        onClick={() => {
-                            deleteFunc(slug);
-                        }}>
-                        <DeleteForeverIcon />
-                    </IconButton>
+                <section className="flex flex-row justify-between items-center">
+                    <h3 className="text-md sm:text-2xl font-righteous font-semibold text-blue-900">
+                        {title}
+                    </h3>
+                    <Tooltip title="Delete" arrow>
+                        <IconButton
+                            aria-label="delete"
+                            color="error"
+                            onClick={() => {
+                                deleteFunc(slug);
+                            }}>
+                            <DeleteForeverIcon />
+                        </IconButton>
+                    </Tooltip>
                 </section>
-                <h3 className="text-md sm:text-2xl font-righteous font-semibold text-blue-900 pb-2">
-                    {title}
-                </h3>
                 <div
                     className="preview"
                     dangerouslySetInnerHTML={{ __html: htmlContent }}

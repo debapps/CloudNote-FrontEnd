@@ -11,6 +11,7 @@ import { useSession } from "next-auth/react";
 import { AlertContext } from "../context/alert/AlertProvider";
 import { getHTML, getMarkDown } from "@/utils/htmlMarkDownConverter";
 import { remoteAPICall } from "@/utils/callAPI";
+import Tooltip from "@mui/material/Tooltip";
 
 const theme = createTheme({
     palette: {
@@ -98,13 +99,15 @@ export default function NoteDetails({ title, content, slug, updatedAt }) {
                             {title}
                         </h1>
                         <ThemeProvider theme={theme}>
-                            <IconButton
-                                onClick={handleClickOpen}
-                                aria-label="edit"
-                                color="secondary"
-                                size="large">
-                                <EditNoteIcon />
-                            </IconButton>
+                            <Tooltip title="Edit" arrow>
+                                <IconButton
+                                    onClick={handleClickOpen}
+                                    aria-label="edit"
+                                    color="secondary"
+                                    size="large">
+                                    <EditNoteIcon />
+                                </IconButton>
+                            </Tooltip>
                         </ThemeProvider>
                     </div>
                     <p className="text-xs md:text-sm font-poppins font-thin text-gray-500 italic">
@@ -117,15 +120,17 @@ export default function NoteDetails({ title, content, slug, updatedAt }) {
                 />
                 <section className="bg-blue-950 shadow-lg shadow-brand-color rounded-full">
                     <ThemeProvider theme={theme}>
-                        <IconButton
-                            onClick={() => {
-                                router.push("/");
-                            }}
-                            aria-label="back"
-                            size="large"
-                            color="primary">
-                            <ArrowCircleLeftIcon />
-                        </IconButton>
+                        <Tooltip title="Back" arrow>
+                            <IconButton
+                                onClick={() => {
+                                    router.push("/");
+                                }}
+                                aria-label="back"
+                                size="large"
+                                color="primary">
+                                <ArrowCircleLeftIcon />
+                            </IconButton>
+                        </Tooltip>
                     </ThemeProvider>
                 </section>
             </main>

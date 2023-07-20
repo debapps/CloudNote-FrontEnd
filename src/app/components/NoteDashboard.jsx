@@ -14,6 +14,7 @@ import { useContext, useState } from "react";
 import { Dialog, DialogTitle } from "@mui/material";
 import { AlertContext } from "../context/alert/AlertProvider";
 import { getHTML, getMarkDown } from "@/utils/htmlMarkDownConverter";
+import Tooltip from "@mui/material/Tooltip";
 
 const theme = createTheme({
     palette: {
@@ -140,13 +141,15 @@ export default function NoteDashboard({ userData }) {
                 <Zoom in={true} style={{ transitionDelay: "200ms" }}>
                     <div className="bg-blue-950 rounded-full fixed right-8 bottom-72 shadow-lg shadow-brand-color">
                         <ThemeProvider theme={theme}>
-                            <IconButton
-                                onClick={handleClickOpen}
-                                aria-label="add"
-                                size="large"
-                                color="primary">
-                                <AddCircleOutlineIcon />
-                            </IconButton>
+                            <Tooltip title="Add Note" arrow>
+                                <IconButton
+                                    onClick={handleClickOpen}
+                                    aria-label="add"
+                                    size="large"
+                                    color="primary">
+                                    <AddCircleOutlineIcon />
+                                </IconButton>
+                            </Tooltip>
                         </ThemeProvider>
                     </div>
                 </Zoom>
